@@ -18,6 +18,7 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
+import { Button } from "./ui/button";
 
 // Fix missing default marker icons in Leaflet when using Webpack
 delete (L.Icon.Default.prototype as any)._getIconUrl;
@@ -115,6 +116,19 @@ const LeafletMapComponent = ({ stations }: LeafletMapComponentProps) => {
                     </LineChart>
                   </ResponsiveContainer>
                 </div>
+                <p className="text-sm mt-2">
+                  Terakhir Update: {station.pos.tanggal}
+                </p>
+                <Button
+                  variant="outline"
+                  className="mt-2 w-full"
+                  onClick={() => {
+                    const url = `/stations/${station.pos.id}`;
+                    window.open(url, "_blank");
+                  }}
+                >
+                  View Details
+                </Button>
               </CardContent>
             </Card>
           </Popup>
