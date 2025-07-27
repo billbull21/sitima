@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useMap } from "react-leaflet";
 import { LatLngTuple } from "leaflet";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import { LatLngExpression, Icon } from "leaflet";
+import { LatLngExpression } from "leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import type { Station } from "@/models/station_model";

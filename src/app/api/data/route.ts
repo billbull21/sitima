@@ -1,6 +1,5 @@
 import fs from 'fs';
 import path from 'path';
-import type { NextApiRequest } from 'next';
 import { NextResponse } from 'next/server';
 
 export async function GET(req: Request) {

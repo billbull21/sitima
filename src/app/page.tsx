@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from 'next/dynamic';
-import Head from 'next/head';
+// import Head from 'next/head';
 
 // Leaflet needs to run only on the client side
 const LeafletMap = dynamic(() => import('@/components/leaflet_map_component'), { ssr: false });
