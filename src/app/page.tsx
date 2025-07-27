@@ -8,7 +8,6 @@ const LeafletMap = dynamic(() => import('@/components/leaflet_map_component'), {
 import { useEffect, useState } from "react";
 import type { Station } from "@/models/station_model";
 import { Navbar } from './../components/navbar';
-import { getStationsInRange } from '@/lib/fetchStations';
 
 export default function Home() {
 
