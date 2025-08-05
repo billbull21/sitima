@@ -1,4 +1,5 @@
-("use client");
+"use client";
+
 // Fix missing default marker icons in Leaflet when using Webpack
 delete (L.Icon.Default.prototype as any)._getIconUrl;
 
