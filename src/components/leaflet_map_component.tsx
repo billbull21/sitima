@@ -1,22 +1,27 @@
-"use client";
+// Fix missing default marker icons in Leaflet when using Webpack
+delete (L.Icon.Default.prototype as any)._getIconUrl;
 
-import { useEffect } from "react";
-import { useMap } from "react-leaflet";
-import { LatLngTuple } from "leaflet";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import { LatLngExpression } from "leaflet";
-import "leaflet/dist/leaflet.css";
-import L from "leaflet";
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: require("leaflet/dist/images/marker-icon-2x.png"),
+  iconUrl: require("leaflet/dist/images/marker-icon.png"),
+  shadowUrl: require("leaflet/dist/images/marker-shadow.png"),
+});
+("use client");
+
 import type { Station } from "@/models/station_model";
+import L, { LatLngExpression, LatLngTuple } from "leaflet";
+import "leaflet/dist/leaflet.css";
+import { useEffect } from "react";
+import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
 
 import { Card, CardContent } from "@/components/ui/card";
 import {
-  LineChart,
   Line,
+  LineChart,
+  ResponsiveContainer,
+  Tooltip,
   XAxis,
   YAxis,
-  Tooltip,
-  ResponsiveContainer,
 } from "recharts";
 import { Button } from "./ui/button";
 
@@ -70,7 +75,11 @@ const LeafletMapComponent = ({ stations }: LeafletMapComponentProps) => {
       : [-7.797068, 110.370529];
 
   return (
-    <MapContainer center={centerPosition} zoom={13} style={{ height: "500px", width: "100%" }}>
+    <MapContainer
+      center={centerPosition}
+      zoom={13}
+      style={{ height: "100%", width: "100%" }}
+    >
       <TileLayer
         // attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}"

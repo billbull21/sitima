@@ -1,16 +1,16 @@
 // components/ui/Navbar.tsx
 "use client";
 
-import Link from "next/link";
+import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
   NavigationMenuItem,
-  NavigationMenuList,
   NavigationMenuLink,
+  NavigationMenuList,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import Link from "next/link";
 import { useState } from "react";
 
 export function Navbar() {
@@ -30,7 +30,10 @@ export function Navbar() {
         <NavigationMenu className="hidden md:flex space-x-6">
           <NavigationMenuList>
             <NavigationMenuItem>
-              <NavigationMenuLink className={navigationMenuTriggerStyle()} href="https://oemam.com">
+              <NavigationMenuLink
+                className={navigationMenuTriggerStyle()}
+                href="https://oemam.netlify.app"
+              >
                 About Me
               </NavigationMenuLink>
             </NavigationMenuItem>
@@ -56,7 +59,7 @@ export function Navbar() {
             variant="outline"
             className="w-full justify-start text-left"
           >
-            <Link href="https://oemam.com">About Me</Link>
+            <Link href="https://oemam.netlify.app">About Me</Link>
           </Button>
         </div>
       )}
