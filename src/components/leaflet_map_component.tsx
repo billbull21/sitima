@@ -1,3 +1,4 @@
+("use client");
 // Fix missing default marker icons in Leaflet when using Webpack
 delete (L.Icon.Default.prototype as any)._getIconUrl;
 
@@ -6,7 +7,6 @@ L.Icon.Default.mergeOptions({
   iconUrl: require("leaflet/dist/images/marker-icon.png"),
   shadowUrl: require("leaflet/dist/images/marker-shadow.png"),
 });
-("use client");
 
 import type { Station } from "@/models/station_model";
 import L, { LatLngExpression, LatLngTuple } from "leaflet";
