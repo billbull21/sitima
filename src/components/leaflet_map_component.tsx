@@ -1,14 +1,5 @@
 "use client";
 
-// Fix missing default marker icons in Leaflet when using Webpack
-delete (L.Icon.Default.prototype as any)._getIconUrl;
-
-L.Icon.Default.mergeOptions({
-  iconRetinaUrl: require("leaflet/dist/images/marker-icon-2x.png"),
-  iconUrl: require("leaflet/dist/images/marker-icon.png"),
-  shadowUrl: require("leaflet/dist/images/marker-shadow.png"),
-});
-
 import type { Station } from "@/models/station_model";
 import L, { LatLngExpression, LatLngTuple } from "leaflet";
 import "leaflet/dist/leaflet.css";
@@ -25,15 +16,6 @@ import {
   YAxis,
 } from "recharts";
 import { Button } from "./ui/button";
-
-// Fix missing default marker icons in Leaflet when using Webpack
-delete (L.Icon.Default.prototype as any)._getIconUrl;
-
-L.Icon.Default.mergeOptions({
-  iconRetinaUrl: require("leaflet/dist/images/marker-icon-2x.png"),
-  iconUrl: require("leaflet/dist/images/marker-icon.png"),
-  shadowUrl: require("leaflet/dist/images/marker-shadow.png"),
-});
 
 interface LeafletMapComponentProps {
   stations: Station[];
@@ -75,6 +57,8 @@ const LeafletMapComponent = ({ stations }: LeafletMapComponentProps) => {
         ]
       : [-7.797068, 110.370529];
 
+  const icon = L.icon({ iconUrl: "/images/marker-icon.png" });
+
   return (
     <MapContainer
       center={centerPosition}
@@ -93,6 +77,7 @@ const LeafletMapComponent = ({ stations }: LeafletMapComponentProps) => {
           position={
             station.pos.longlat.split(",").map(Number) as LatLngExpression
           }
+          icon={icon}
         >
           <Popup>
             <Card key={i} className="rounded-2xl shadow p-4">
